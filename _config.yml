@@ -23,7 +23,7 @@ repository               : "martgru/martgru.github.io"
 author:
   # Biographic information
   avatar           : "profile.jpeg"
-  name             : "Martyna Gruszka"
+  #name             : "Martyna Gruszka"
   #pronouns         : # example: "she/her"  
   #bio              : "Short biography for the left-hand sidebar"
   #location         : "Tokyo, Japan"
