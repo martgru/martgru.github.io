@@ -28,7 +28,7 @@ author:
   #bio              : "Short biography for the left-hand sidebar"
   #location         : "Tokyo, Japan"
   employer         : "Institute of Science Tokyo"
-  uri              : "https://www.isct.ac.jp/en"
+  #uri              : "my website"
   #email            : "none@example.org" 
   links:
     - label: "Lab"
