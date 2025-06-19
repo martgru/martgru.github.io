@@ -27,7 +27,7 @@ author:
   #pronouns         : # example: "she/her"  
   #bio              : "Short biography for the left-hand sidebar"
   #location         : "Tokyo, Japan"
-  employer         : "Institute of Science Tokyo"
+  employer         : '<a href="https://www.isct.ac.jp/en" target="_blank">Institute of Science Tokyo</a>'
   #uri              : # URL
   #email            : "none@example.org" 
   links:
