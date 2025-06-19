@@ -35,7 +35,7 @@ author:
       icon: "fas fa-fw fa-flask"
       url: "https://mmai.tech/"
     - label: "Company"
-      icon: "fas fa-fw fa-building"
+      icon: "fas fa-fw fa-briefcase"
       url: "https://hugkun.com/"
 
   # Academic websites
