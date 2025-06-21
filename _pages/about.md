@@ -28,11 +28,6 @@ I presented my first research project, *“Elaborative Text Simplification via T
 
 ![Overview](/images/diagram.png)
 
-Here's the abstract:
-
-> *Text simplification is widely believed to enhance
-comprehension for non-native readers, and has, therefore, been the focus of extensive research. However,conventional text simplification often involves removing a considerable amount of complex content, which may reduce valuable information and potentially limit opportunities to engage with challenging concepts. In this work, we specifically address the needs of language learners by focusing on elaborative text simplification, a process involving content addition, such as providing specific explanations and clarifications that could make a text comprehensible within its context. We introduce a novel data-driven approach for guided elaboration generation, demonstrating that explicitly specifying elaboration targets leads to improved performance.*
-
 
 **How to cite this work**:
 
