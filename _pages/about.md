@@ -8,7 +8,7 @@ redirect_from:
 ---
 
 ## Who am I?
-======
+
 
 Hello, and thank you for visiting my profile page!  
 I'm a 1st-year Master's student in Computer Science at the Institute of Science Tokyo (formerly Tokyo Institute of Technology), currently conducting research in the Inoue Lab.
@@ -18,7 +18,7 @@ My academic interests lie at the intersection of natural language processing (NL
 I’m also a huge fan of the Natural Approach and Comprehensible Input theory, and I believe that the age of AI offers an exciting opportunity to rethink and improve how we teach and learn languages.
 
 ## What is my research about?
-======
+
 
 My research focuses on **elaborative text simplification**, a subfield of text simplification that aims to enhance the **comprehensibility** of texts not by removing difficult content, but by **adding helpful explanations** — a powerful approach especially for language learners. I'm particularly interested in how we can implement and scale this idea using latest Large Multimodal Models.
 
