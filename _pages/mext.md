@@ -1,8 +1,11 @@
 ---
 layout: page
 title: "MEXT"
+author_profile: true
 permalink: /mext/
 ---
+
+{% include base_path %}
 
 On my blog, I share essential information and tips about the MEXT scholarship program, as well as my experiences of living and studying in Japan :)
 
