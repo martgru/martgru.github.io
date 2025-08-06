@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: archive
 title: "MEXT"
 author_profile: true
 permalink: /mext/
