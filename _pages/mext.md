@@ -20,9 +20,10 @@ On my blog **Przez MEXT do Japonii** 🌸 written in Polish langauge, I share es
 }
 .grid-item iframe {
   width: 100%;
-  height: 300px;
   border: 1px solid #EEE;
   background: white;
+  height: auto;
+  aspect-ratio: 3 / 4;
 }
 </style>
 
