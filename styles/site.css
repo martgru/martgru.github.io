@@ -41,7 +41,7 @@ body {
   z-index: 40;
   height: var(--header-h);
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: minmax(0, auto) 1fr auto;
   align-items: center;
   gap: 1rem;
   padding: 0.9rem 1.2rem;
@@ -50,10 +50,20 @@ body {
   backdrop-filter: blur(7px);
 }
 
+.brand-panel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.09rem;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
 .brand {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
+  min-width: 0;
   color: var(--black);
   font-family: "Bebas Neue", "Space Grotesk", sans-serif;
   font-size: 1.95rem;
@@ -61,6 +71,12 @@ body {
   text-decoration: none;
   text-transform: uppercase;
   white-space: nowrap;
+}
+
+.brand-name {
+  line-height: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .vinyl-icon {
@@ -170,10 +186,10 @@ body {
 .slide-card {
   height: 100%;
   min-height: 0;
-  border: 1px solid var(--gray-200);
-  border-radius: 24px;
-  background: linear-gradient(145deg, #ffffff 0%, #ececee 100%);
-  box-shadow: var(--shadow);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
   overflow: hidden;
 }
 
@@ -183,15 +199,26 @@ body {
 }
 
 .media-pane {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 2vw, 1.6rem);
   min-height: 0;
+  border-right: 0;
+  background: transparent;
 }
 
 .media-pane img {
-  width: 100%;
-  height: 100%;
+  width: min(100%, 520px);
+  aspect-ratio: 1;
+  height: auto;
+  max-height: 100%;
+  border-radius: 50%;
+  border: 0;
   object-fit: cover;
+  object-position: 50% 50%;
   display: block;
-  border-right: 1px solid var(--gray-200);
+  box-shadow: none;
 }
 
 .content-pane {
@@ -208,6 +235,14 @@ body {
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
   touch-action: pan-y;
+}
+
+#about .content-pane {
+  position: relative;
+}
+
+#about .slide-scroll {
+  overflow-y: hidden;
 }
 
 .slide-scroll::-webkit-scrollbar {
@@ -228,6 +263,22 @@ body {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 700;
+}
+
+#about .eyebrow {
+  font-family: "Bebas Neue", "Space Grotesk", sans-serif;
+  font-size: 1.85rem;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.section-heading-red {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--red);
+  font-size: 1.85rem;
+  line-height: 1;
 }
 
 h1,
@@ -263,7 +314,7 @@ p {
   padding: 0;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.65rem;
 }
 
@@ -289,34 +340,153 @@ p {
   border-color: var(--black);
 }
 
-.embed-grid {
-  margin-top: 1rem;
-  display: grid;
-  gap: 0.85rem;
-}
-
-.embed-card {
-  min-height: 160px;
-  border: 1px dashed #8a8a8f;
-  border-radius: 16px;
-  padding: 1rem;
-  background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(236, 236, 237, 0.95)),
-    repeating-linear-gradient(-45deg, rgba(193, 18, 31, 0.05), rgba(193, 18, 31, 0.05) 7px, transparent 7px, transparent 16px);
-}
-
-.embed-label {
+.about-maru-logo {
+  position: absolute;
+  right: clamp(1rem, 2.5vw, 1.8rem);
+  bottom: -2.2rem;
+  display: flex;
+  justify-content: flex-end;
   margin: 0;
-  color: var(--red);
-  font-size: 0.78rem;
-  letter-spacing: 0.12em;
-  font-weight: 700;
-  text-transform: uppercase;
+  padding: 0;
+  pointer-events: none;
 }
 
-.embed-card h3 {
-  margin: 0.18rem 0 0.45rem;
-  font-size: 1.55rem;
+.about-maru-logo img {
+  display: block;
+  width: min(28vw, 330px);
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.music-layout {
+  height: 100%;
+  display: grid;
+  grid-template-columns: minmax(260px, 0.85fr) minmax(360px, 1.15fr);
+  gap: clamp(1.4rem, 4vw, 4rem);
+  overflow: hidden;
+}
+
+.music-intro,
+.music-performances {
+  min-width: 0;
+}
+
+.artist-page-embed {
+  margin-top: 1rem;
+}
+
+.album-preview-card {
+  width: min(100%, 360px);
+  aspect-ratio: 1;
+  min-height: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  border-radius: 18px;
+  padding: 1.2rem;
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 700;
+  background-color: #19191c;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  transition: transform 0.2s ease, filter 0.2s ease;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
+}
+
+.album-preview-card:hover {
+  filter: brightness(1.05);
+  transform: translateY(-2px);
+}
+
+.artist-page-fallback {
+  margin-top: 0.7rem;
+  font-size: 0.92rem;
+}
+
+.artist-page-link {
+  color: var(--black);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.artist-page-link:hover {
+  text-decoration: underline;
+}
+
+.text-link {
+  color: var(--black);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.text-link:hover {
+  text-decoration: underline;
+}
+
+.music-performances {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  min-height: 0;
+}
+
+.performance-list {
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 0.3rem;
+  scrollbar-gutter: stable;
+}
+
+.performance-list::-webkit-scrollbar {
+  width: 10px;
+}
+
+.performance-list::-webkit-scrollbar-thumb {
+  background: #c7c7cb;
+  border-radius: 99px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.performance-card {
+  margin-bottom: 1rem;
+}
+
+.performance-title {
+  margin: 0 0 0.45rem;
+  font-family: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+
+.youtube-frame {
+  height: clamp(150px, 20vh, 220px);
+  overflow: hidden;
+  border-radius: 18px;
+  background: #111;
+}
+
+.performance-placeholder {
+  min-height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #1d1d20, #4a4a4e);
+  color: var(--white);
+  font-weight: 700;
+}
+
+.youtube-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 .substack-grid {
@@ -347,11 +517,82 @@ p {
   margin-bottom: 0.9rem;
 }
 
-.mext-grid {
+.mext-carousel {
   margin-top: 0.95rem;
+}
+
+.mext-carousel-viewport {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.mext-carousel-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.mext-carousel-track {
   display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 2.55rem) / 4);
   gap: 0.85rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.mext-post-card {
+  display: block;
+  min-width: 0;
+  aspect-ratio: 4 / 5;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+  scroll-snap-align: start;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.07);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.mext-post-card:hover {
+  filter: brightness(1.03);
+  transform: translateY(-2px);
+}
+
+.mext-post-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mext-post-placeholder {
+  height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  color: var(--black);
+  font-weight: 700;
+  text-align: center;
+}
+
+.mext-carousel-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+.mext-carousel-button {
+  min-height: 34px;
+  border: 1px solid var(--gray-200);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--black);
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.85rem;
+  cursor: pointer;
 }
 
 .mext-preview {
@@ -391,27 +632,18 @@ p {
 }
 
 .mext-link {
-  display: inline-flex;
-  align-items: center;
-  min-height: 34px;
-  border-radius: 999px;
-  border: 1px solid var(--black);
-  background: var(--black);
-  color: var(--white);
+  display: inline;
+  color: var(--black);
   text-decoration: none;
-  font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 0.2rem 0.75rem;
 }
 
 .mext-link:hover {
-  background: #29292d;
+  text-decoration: underline;
 }
 
 .research-card .paper-link {
-  color: var(--red);
+  color: var(--black);
   font-weight: 700;
   text-decoration: none;
 }
@@ -420,15 +652,36 @@ p {
   text-decoration: underline;
 }
 
+.publication-list {
+  margin: 0.5rem 0 1rem;
+  padding-left: 1.2rem;
+}
+
+.research-main .section-heading-red + .section-heading-red {
+  margin-top: clamp(2.2rem, 7vh, 4.5rem);
+}
+
+.publication-list li {
+  margin-bottom: 0.55rem;
+  font-size: 1rem;
+}
+
 .research-card h1 {
   font-size: clamp(2.05rem, 5vw, 3.35rem);
 }
 
-.research-top {
+.research-layout {
+  height: 100%;
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.82fr);
+  grid-template-columns: minmax(320px, 0.95fr) minmax(360px, 1.05fr);
   align-items: start;
-  gap: 1rem;
+  gap: clamp(1.4rem, 4vw, 4rem);
+  overflow: hidden;
+}
+
+.research-main,
+.research-aside {
+  min-width: 0;
 }
 
 .research-main p:last-child {
@@ -436,11 +689,11 @@ p {
 }
 
 .research-aside {
-  border: 1px solid var(--gray-200);
-  border-radius: 16px;
-  background: #fff;
-  padding: 0.75rem;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
 }
 
 .research-aside-label {
@@ -457,12 +710,21 @@ p {
 }
 
 .research-figure img {
-  width: 100%;
-  max-height: 240px;
+  width: min(100%, 520px);
+  max-height: min(62vh, 500px);
   object-fit: contain;
+  background: transparent;
+  border-radius: 18px;
+  border: 0;
+}
+
+.research-pdf object {
+  display: block;
+  width: 100%;
+  height: min(70vh, 560px);
+  border: 0;
+  border-radius: 18px;
   background: #fff;
-  border-radius: 16px;
-  border: 1px solid var(--gray-200);
 }
 
 .research-card pre {
@@ -507,14 +769,19 @@ p {
   }
 
   .media-pane img {
+    width: min(72vw, 280px);
+    border-bottom: 0;
+  }
+
+  .media-pane {
     border-right: 0;
-    border-bottom: 1px solid var(--gray-200);
+    border-bottom: 0;
   }
 }
 
 @media (max-width: 860px) {
   .site-header {
-    grid-template-columns: auto auto;
+    grid-template-columns: minmax(0, 1fr) auto;
     height: var(--header-h);
   }
 
@@ -549,8 +816,19 @@ p {
     background: #fff;
   }
 
-  .research-top {
+  .research-layout {
     grid-template-columns: 1fr;
+    align-items: start;
+    overflow-y: auto;
+  }
+
+  .music-layout {
+    grid-template-columns: 1fr;
+    overflow-y: auto;
+  }
+
+  .music-performances {
+    min-height: 420px;
   }
 
   .research-figure img {
@@ -564,28 +842,72 @@ p {
     --footer-h: 52px;
   }
 
+  .brand-panel {
+    gap: 0.04rem;
+  }
+
   .brand {
-    font-size: 1.6rem;
+    font-size: clamp(1.02rem, 5.2vw, 1.3rem);
+    gap: 0.32rem;
   }
 
   .vinyl-icon {
-    width: 24px;
-    height: 24px;
+    width: 21px;
+    height: 21px;
+  }
+
+  .menu-toggle {
+    min-height: 34px;
+    padding: 0.25rem 0.65rem;
+    font-size: 0.72rem;
   }
 
   .site-main {
     padding: 0.55rem;
   }
 
+  .split-card {
+    grid-template-rows: minmax(180px, 28vh) minmax(0, 1fr);
+  }
+
   .slide-card {
-    border-radius: 16px;
+    border-radius: 0;
   }
 
   .icon-links {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.45rem;
   }
 
-  .mext-grid {
-    grid-template-columns: 1fr;
+  .icon-links a {
+    min-height: 40px;
+    gap: 0.28rem;
+    font-size: 0.72rem;
+  }
+
+  .about-maru-logo {
+    position: static;
+    justify-content: center;
+    margin-top: 1.2rem;
+    padding-right: 0;
+    pointer-events: auto;
+  }
+
+  #about .slide-scroll {
+    overflow-y: auto;
+  }
+
+  .about-maru-logo img {
+    width: min(52vw, 220px);
+  }
+
+  .mext-carousel-track {
+    grid-auto-columns: calc((100% - 0.85rem) / 2);
+  }
+}
+
+@media (max-width: 620px) {
+  .mext-carousel-track {
+    grid-auto-columns: 82%;
   }
 }
