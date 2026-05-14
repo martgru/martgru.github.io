@@ -806,12 +806,13 @@ p {
 
   .site-nav ul {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 0.45rem;
   }
 
   .site-nav a {
     justify-content: center;
+    text-align: center;
     border: 1px solid var(--gray-200);
     background: #fff;
   }
@@ -828,7 +829,14 @@ p {
   }
 
   .music-performances {
-    min-height: 420px;
+    display: block;
+    min-height: 0;
+  }
+
+  .performance-list {
+    overflow: visible;
+    padding-right: 0;
+    scrollbar-gutter: auto;
   }
 
   .research-figure img {
@@ -857,9 +865,12 @@ p {
   }
 
   .menu-toggle {
+    align-items: center;
+    justify-content: center;
     min-height: 34px;
     padding: 0.25rem 0.65rem;
     font-size: 0.72rem;
+    line-height: 1;
   }
 
   .site-main {
@@ -867,7 +878,19 @@ p {
   }
 
   .split-card {
-    grid-template-rows: minmax(180px, 28vh) minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+
+  .media-pane {
+    min-height: 0;
+    padding: 1.3rem 0 1rem;
+  }
+
+  .media-pane img {
+    width: min(70vw, 320px);
+    height: min(70vw, 320px);
+    max-height: none;
+    border-radius: 50%;
   }
 
   .slide-card {
@@ -907,6 +930,22 @@ p {
 }
 
 @media (max-width: 620px) {
+  .site-nav {
+    padding: 0.65rem;
+  }
+
+  .site-nav ul {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.35rem;
+  }
+
+  .site-nav a {
+    min-height: 38px;
+    padding: 0.25rem 0.25rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+  }
+
   .mext-carousel-track {
     grid-auto-columns: 82%;
   }
