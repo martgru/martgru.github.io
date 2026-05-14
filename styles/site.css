@@ -340,6 +340,14 @@ p {
   border-color: var(--black);
 }
 
+.icon-links a.icon-only {
+  gap: 0;
+}
+
+.icon-links a.icon-only i {
+  margin: 0;
+}
+
 .about-maru-logo {
   position: absolute;
   right: clamp(1rem, 2.5vw, 1.8rem);
@@ -846,8 +854,12 @@ p {
 
 @media (max-width: 620px) {
   :root {
-    --header-h: 76px;
+    --header-h: 64px;
     --footer-h: 52px;
+  }
+
+  .site-header {
+    padding: 0.55rem 1rem;
   }
 
   .brand-panel {
@@ -855,21 +867,21 @@ p {
   }
 
   .brand {
-    font-size: clamp(1.02rem, 5.2vw, 1.3rem);
+    font-size: clamp(1rem, 5vw, 1.22rem);
     gap: 0.32rem;
   }
 
   .vinyl-icon {
-    width: 21px;
-    height: 21px;
+    width: 20px;
+    height: 20px;
   }
 
   .menu-toggle {
     align-items: center;
     justify-content: center;
-    min-height: 34px;
-    padding: 0.25rem 0.65rem;
-    font-size: 0.72rem;
+    min-height: 30px;
+    padding: 0.2rem 0.58rem;
+    font-size: 0.68rem;
     line-height: 1;
   }
 
@@ -881,9 +893,22 @@ p {
     grid-template-rows: auto minmax(0, 1fr);
   }
 
+  #about .split-card {
+    display: block;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #about .content-pane {
+    height: auto;
+    overflow: visible;
+  }
+
   .media-pane {
     min-height: 0;
-    padding: 1.3rem 0 1rem;
+    padding: 1rem 0 1.2rem;
   }
 
   .media-pane img {
@@ -917,7 +942,7 @@ p {
   }
 
   #about .slide-scroll {
-    overflow-y: auto;
+    overflow: visible;
   }
 
   .about-maru-logo img {
@@ -931,7 +956,7 @@ p {
 
 @media (max-width: 620px) {
   .site-nav {
-    padding: 0.65rem;
+    padding: 0.5rem 0.65rem;
   }
 
   .site-nav ul {
@@ -940,7 +965,7 @@ p {
   }
 
   .site-nav a {
-    min-height: 38px;
+    min-height: 34px;
     padding: 0.25rem 0.25rem;
     font-size: 0.68rem;
     letter-spacing: 0.06em;

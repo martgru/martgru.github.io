@@ -302,13 +302,19 @@
 
     (links || []).forEach((link) => {
       const anchor = createLink(link.url, "", "");
+      if (link.iconOnly) {
+        anchor.classList.add("icon-only");
+        anchor.setAttribute("aria-label", link.label || "External link");
+      }
       const icon = createElement("i", {
         className: link.icon || "",
         attributes: { "aria-hidden": "true" }
       });
 
       anchor.appendChild(icon);
-      anchor.appendChild(createElement("span", { text: link.label || "" }));
+      if (!link.iconOnly) {
+        anchor.appendChild(createElement("span", { text: link.label || "" }));
+      }
       list.appendChild(createElement("li", {}, [anchor]));
     });
 

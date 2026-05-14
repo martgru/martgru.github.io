@@ -39,9 +39,10 @@ window.siteContent = {
           icon: "fa-solid fa-building-columns"
         },
         {
-          label: "GitHub",
-          url: "https://github.com/martgru",
-          icon: "fa-brands fa-github"
+          label: "X",
+          url: "https://x.com/martynagruszka2?s=21&t=69kyBKbF-zJgbctl_iDElg",
+          icon: "fa-brands fa-x-twitter",
+          iconOnly: true
         },
         {
           label: "LinkedIn",
