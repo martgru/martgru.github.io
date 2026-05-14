@@ -879,6 +879,7 @@ p {
   .menu-toggle {
     align-items: center;
     justify-content: center;
+    width: 90px;
     min-height: 30px;
     padding: 0.2rem 0.58rem;
     font-size: 0.68rem;
@@ -960,11 +961,13 @@ p {
   }
 
   .site-nav ul {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    display: flex;
+    justify-content: center;
     gap: 0.35rem;
   }
 
   .site-nav a {
+    width: 90px;
     min-height: 34px;
     padding: 0.25rem 0.25rem;
     font-size: 0.68rem;
