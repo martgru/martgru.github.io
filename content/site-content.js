@@ -161,7 +161,8 @@ window.siteContent = {
       publicationsTitle: "List of my publications",
       publications: [
         {
-          title: "MES-Bench: A Benchmark for Multimodal Elaborative Simplification and Comprehensibility Evaluation in Language Learning"
+          title: "MES-Bench: A Benchmark for Multimodal Elaborative Simplification and Comprehensibility Evaluation in Language Learning",
+          url:"https://openaccess.thecvf.com/content/CVPR2026W/CV4Edu/papers/Gruszka_MES-Bench_A_Benchmark_for_Multimodal_Elaborative_Simplification_and_Comprehensibility_Evaluation_CVPRW_2026_paper.pdf"
         },
         {
           title: "DISCODE: Distribution-Aware Score Decoder for Robust Automatic Evaluation of Image Captioning",
