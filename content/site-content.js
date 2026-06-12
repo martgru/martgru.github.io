@@ -23,7 +23,7 @@ window.siteContent = {
       label: "About",
       eyebrow: "About",
       image: {
-        src: "images/profile.jpeg",
+        src: "images/n-profile.png",
         alt: "Main portrait of Martyna Gruszka"
       },
       paragraphs: [

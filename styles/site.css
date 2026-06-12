@@ -200,23 +200,23 @@ body {
 
 .media-pane {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  padding: clamp(1rem, 2vw, 1.6rem);
+  padding: clamp(1rem, 2vw, 1.6rem) clamp(1rem, 2vw, 1.6rem) 0;
   min-height: 0;
   border-right: 0;
   background: transparent;
 }
 
 .media-pane img {
-  width: min(100%, 520px);
-  aspect-ratio: 1;
-  height: auto;
+  width: auto;
+  height: 100%;
   max-height: 100%;
-  border-radius: 50%;
+  max-width: 100%;
+  border-radius: 0;
   border: 0;
-  object-fit: cover;
-  object-position: 50% 50%;
+  object-fit: contain;
+  object-position: 50% 100%;
   display: block;
   box-shadow: none;
 }
@@ -770,6 +770,12 @@ p {
   text-transform: uppercase;
 }
 
+@media (min-width: 1025px) {
+  .site-main {
+    padding-bottom: 0;
+  }
+}
+
 @media (max-width: 1024px) {
   .split-card {
     grid-template-columns: 1fr;
@@ -908,6 +914,7 @@ p {
   }
 
   .media-pane {
+    align-items: center;
     min-height: 0;
     padding: 1rem 0 1.2rem;
   }
@@ -917,6 +924,8 @@ p {
     height: min(70vw, 320px);
     max-height: none;
     border-radius: 50%;
+    object-fit: cover;
+    object-position: 50% 20%;
   }
 
   .slide-card {
