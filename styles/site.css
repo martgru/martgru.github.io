@@ -562,6 +562,7 @@ p {
   height: 100%;
   display: grid;
   grid-template-columns: minmax(320px, 0.95fr) minmax(360px, 1.05fr);
+  grid-template-rows: minmax(0, 1fr);
   align-items: start;
   gap: clamp(1.4rem, 4vw, 4rem);
   overflow: hidden;
@@ -570,6 +571,7 @@ p {
 .research-main,
 .research-aside {
   min-width: 0;
+  min-height: 0;
 }
 
 .research-main p:last-child {
@@ -606,13 +608,27 @@ p {
   border: 0;
 }
 
-.research-pdf object {
-  display: block;
+.research-pdf {
+  height: 100%;
+}
+
+.research-poster {
+  display: flex;
   width: 100%;
-  height: min(70vh, 560px);
-  border: 0;
-  border-radius: 18px;
-  background: #fff;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+}
+
+.research-poster img {
+  display: block;
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
 }
 
 .research-card pre {
@@ -713,8 +729,19 @@ p {
 
   .research-layout {
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
     align-items: start;
     overflow-y: auto;
+  }
+
+  .research-pdf,
+  .research-poster {
+    height: auto;
+  }
+
+  .research-poster img {
+    height: auto;
+    max-height: 75vh;
   }
 
   .research-figure img {

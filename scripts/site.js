@@ -164,16 +164,17 @@
   }
 
   function renderResearchPdf(pdf) {
+    const poster = createLink(pdf.src, "", "research-poster");
+    poster.setAttribute("aria-label", "Open full " + (pdf.title || "research poster") + " PDF");
+    poster.appendChild(createElement("img", {
+      attributes: {
+        src: pdf.image,
+        alt: pdf.title || "Research poster"
+      }
+    }));
+
     return createElement("aside", { className: "research-aside research-pdf" }, [
-      createElement("object", {
-        attributes: {
-          data: pdf.src,
-          type: "application/pdf",
-          title: pdf.title || "Research PDF preview"
-        }
-      }, [
-        createLink(pdf.src, "Open research poster", "text-link")
-      ])
+      poster
     ]);
   }
 

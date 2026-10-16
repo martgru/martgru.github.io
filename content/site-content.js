@@ -149,6 +149,7 @@ window.siteContent = {
       ],
       previewPdf: {
         src: "files/12_MES-Bench-poster.pdf",
+        image: "images/mes-bench-poster.png",
         title: "MES-Bench research poster"
       }
     }
