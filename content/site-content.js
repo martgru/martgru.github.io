@@ -31,7 +31,7 @@ window.siteContent = {
         "I’m originally from Poland and have been living in Japan since 2020. What first brought me to Japan was my interest in the Japanese language, which I spent many years learning as a hobby.",
         [
           { text: "Music is my biggest passion", bold: true },
-          " - especially DTM and songwriting. I'm an independent artist based in Tokyo and lead a rock band named Black Swallow."
+          " - especially DTM and songwriting. I release music as MARU, an independent artist based in Tokyo, and lead a rock band named Black Swallow."
         ]
       ],
       links: [
