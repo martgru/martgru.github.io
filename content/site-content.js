@@ -13,7 +13,6 @@ window.siteContent = {
 
   nav: [
     { key: "about", label: "About" },
-    { key: "music", label: "Music" },
     { key: "mext", label: "MEXT" },
     { key: "research", label: "Research" }
   ],
@@ -30,13 +29,16 @@ window.siteContent = {
         "Hi, and thank you for visiting my profile page. ",
         "I'm a 2nd-year Master's student in Computer Science at the Institute of Science Tokyo (formerly Tokyo Institute of Technology), currently conducting research in the Inoue Lab.",
         "I’m originally from Poland and have been living in Japan since 2020. What first brought me to Japan was my interest in the Japanese language, which I spent many years learning as a hobby.",
-        "Music is my biggest passion - especially DTM and songwriting. I’m also part of the university’s rock club and occasionally perform at events."
+        [
+          { text: "Music is my biggest passion", bold: true },
+          " - especially DTM and songwriting. I'm an independent artist based in Tokyo and lead a rock band named Black Swallow."
+        ]
       ],
       links: [
         {
-          label: "Institution",
-          url: "https://www.isct.ac.jp/en",
-          icon: "fa-solid fa-building-columns"
+          label: "My Lab",
+          url: "https://mmai.tech/",
+          icon: "fa-solid fa-flask"
         },
         {
           label: "X",
@@ -50,54 +52,25 @@ window.siteContent = {
           icon: "fa-brands fa-linkedin-in"
         },
         {
-          label: "Lab",
-          url: "https://mmai.tech/",
-          icon: "fa-solid fa-flask"
+          label: "TuneCore",
+          url: "https://www.tunecore.co.jp/artists/martgru",
+          icon: "fa-solid fa-record-vinyl"
         },
         {
-          label: "Company",
-          url: "https://hugkun.com/",
-          icon: "fa-solid fa-briefcase"
+          label: "VOAT",
+          url: "https://www.voatmusic.jp/artist/MARU/",
+          icon: "fa-solid fa-music"
         },
         {
-          label: "Club",
-          url: "https://titech.info/circle/32",
-          icon: "fa-solid fa-microphone"
+          label: "Apple Music",
+          url: "https://music.apple.com/jp/artist/maru/1573774294",
+          icon: "fa-brands fa-apple"
         }
       ],
       artistLogo: {
         src: "images/maru-logo.png",
         alt: "MARU artist logo"
       }
-    },
-
-    music: {
-      label: "Music",
-      title: "My Music",
-      albumPreview: {
-        title: "Latest album preview",
-        image: "images/cover.jpg",
-        url: "https://linkco.re/FMG2EEpA"
-      },
-      artistPage: {
-        label: "My TuneCore artist page",
-        url: "https://www.tunecore.co.jp/artists/martgru"
-      },
-      performanceTitle: "Live Performances",
-      performances: [
-        {
-          title: "Turnstile (クリコン 2025/12/06)",
-          url: "https://www.youtube.com/watch?v=f5lAWJabpRU"
-        },
-        {
-          title: "Linkin Park (新歓 2026/05/09)",
-          url: "Coming soon"
-        },
-        {
-          title: "Metallica (新歓 2026/05/09)",
-          url: "Coming soon"
-        }
-      ]
     },
 
     mext: {
@@ -174,9 +147,9 @@ window.siteContent = {
         }
         
       ],
-      image: {
-        src: "images/mes.png",
-        alt: "MES-Bench overview"
+      previewPdf: {
+        src: "files/12_MES-Bench-poster.pdf",
+        title: "MES-Bench research poster"
       }
     }
   }

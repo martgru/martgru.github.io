@@ -58,8 +58,6 @@
 
       if (tab.key === "about") {
         slide = renderAboutSlide(tab, page);
-      } else if (tab.key === "music") {
-        slide = renderMusicSlide(tab, page);
       } else if (tab.key === "mext") {
         slide = renderMextSlide(tab, page);
       } else if (tab.key === "research") {
@@ -88,51 +86,6 @@
     if (page.artistLogo && page.artistLogo.src) {
       pane.appendChild(renderArtistLogo(page.artistLogo));
     }
-    article.appendChild(pane);
-
-    return renderSlide(tab, article);
-  }
-
-  function renderMusicSlide(tab, page) {
-    const article = createElement("article", { className: "slide-card music-card" });
-
-    const intro = createElement("div", { className: "music-intro" }, [
-      createElement("h2", { className: "section-heading-red", text: page.title || "My Music" })
-    ]);
-
-    if (page.albumPreview && page.albumPreview.url) {
-      intro.appendChild(renderAlbumPreview(page.albumPreview, page.artistPage));
-    }
-
-    const performanceList = createElement("div", { className: "performance-list" });
-    (page.performances || []).slice().reverse().forEach((performance) => {
-      const embedUrl = getYouTubeEmbedUrl(performance.url);
-      const videoContent = embedUrl
-        ? createElement("div", { className: "youtube-frame" }, [
-            createElement("iframe", {
-              attributes: {
-                src: embedUrl,
-                title: performance.title || "YouTube performance",
-                loading: "lazy",
-                allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
-                allowfullscreen: ""
-              }
-            })
-          ])
-        : createElement("div", { className: "performance-placeholder", text: performance.url || "Coming soon" });
-
-      performanceList.appendChild(createElement("article", { className: "performance-card" }, [
-        createElement("h3", { className: "performance-title", text: performance.title || "Performance" }),
-        videoContent
-      ]));
-    });
-
-    const videos = createElement("section", { className: "music-performances" }, [
-      createElement("h2", { className: "section-heading-red", text: page.performanceTitle || "Live Performances" }),
-      performanceList
-    ]);
-
-    const pane = createElement("div", { className: "content-pane music-layout" }, [intro, videos]);
     article.appendChild(pane);
 
     return renderSlide(tab, article);
@@ -219,14 +172,26 @@
           title: pdf.title || "Research PDF preview"
         }
       }, [
-        createLink(pdf.src, "Open PDF preview", "text-link")
+        createLink(pdf.src, "Open research poster", "text-link")
       ])
     ]);
   }
 
   function appendParagraphs(parent, paragraphs) {
     (paragraphs || []).forEach((paragraph) => {
-      parent.appendChild(createElement("p", { text: paragraph }));
+      if (Array.isArray(paragraph)) {
+        const element = createElement("p");
+        paragraph.forEach((part) => {
+          if (typeof part === "string") {
+            element.appendChild(document.createTextNode(part));
+          } else if (part && part.bold) {
+            element.appendChild(createElement("strong", { text: part.text || "" }));
+          }
+        });
+        parent.appendChild(element);
+      } else {
+        parent.appendChild(createElement("p", { text: paragraph }));
+      }
     });
   }
 
@@ -330,26 +295,6 @@
         }
       })
     ]);
-  }
-
-  function renderAlbumPreview(albumPreview, artistPage) {
-    const albumLink = createLink(albumPreview.url, albumPreview.title || "Open latest album", "album-preview-card");
-
-    if (albumPreview.image) {
-      albumLink.style.backgroundImage = "url('" + albumPreview.image + "')";
-    }
-
-    const children = [
-      albumLink
-    ];
-
-    if (artistPage && artistPage.url) {
-      children.push(createElement("p", { className: "artist-page-fallback" }, [
-        createLink(artistPage.url, artistPage.label || "Open artist page", "artist-page-link")
-      ]));
-    }
-
-    return createElement("section", { className: "artist-page-embed" }, children);
   }
 
   function renderPublications(publications) {
@@ -522,25 +467,6 @@ function createLink(url, text, className) {
   }
 
   return link;
-}
-
-function getYouTubeEmbedUrl(url) {
-  if (!url) return "";
-
-  try {
-    const parsed = new URL(url);
-    let videoId = "";
-
-    if (parsed.hostname.includes("youtu.be")) {
-      videoId = parsed.pathname.replace("/", "");
-    } else if (parsed.hostname.includes("youtube.com")) {
-      videoId = parsed.searchParams.get("v") || "";
-    }
-
-    return videoId ? "https://www.youtube.com/embed/" + encodeURIComponent(videoId) : "";
-  } catch (error) {
-    return "";
-  }
 }
 
 function setupAnalytics(trackingId) {
